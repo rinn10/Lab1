@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.exploration;
+//package edu.grinnell.csc207.exploration;
 
 public class StringExploration {
 
@@ -23,6 +23,15 @@ public class StringExploration {
     //
     // mvn compile exec:java -q "-Dexec.mainClass=edu.grinnell.csc207.exploration.StringExploration"
     public static void main(String[] args) {
-        // TODO: write your exploration code here!
+        String s1 = "hello world!";
+        String s2 = "hello world!";
+        System.out.println(s1.equals(s2));     // A
+
+        String s3 = s1.substring(0, 5);
+        String s4 = s2.substring(0, 5);
+        System.out.println(s3.equals(s4));     // B
+
+        String s5 = new String(new char[] { 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '!' });
+        System.out.println(s5.equals(s1));     // C
     }
 }

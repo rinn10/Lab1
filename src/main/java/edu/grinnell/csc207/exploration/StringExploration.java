@@ -3,7 +3,10 @@ import java.util.Scanner;
 
 public class StringExploration {
 
-    /** TODO: fill me in and my docstring! */
+    /** 
+     * Sets~
+     * @param strs
+     * TODO: fill me in and my docstring! */
     public static String intersperse(String[] strs) {
         String answer="";
         for(int i=0; i<strs.length; i++){
@@ -34,18 +37,16 @@ public class StringExploration {
     }
     /** TODO: fill me in and my docstring! */
     public static boolean forgivingPrompt(String question) {
-        String lowerQ = question.toLowerCase();
-        while(true)
-        if(lowerQ.charAt(0)=='y'){
-            if(lowerQ=="y" || lowerQ=="yes" || lowerQ=="yep"){
+        String answer =fetchString();
+        String lowerQ = answer.toLowerCase();
+     //   while(true)
+        if(lowerQ=="y" || lowerQ=="yes" || lowerQ=="yep"){
+                System.out.println("Correct");
                 return true;
-            }
-        } else if(lowerQ.charAt(0)=='n'){
-            if(lowerQ=="n" || lowerQ=="no" || lowerQ=="nope"){
-                return false;
-            }
-        }else{
-            fetchString();
+       }else{
+        System.out.println("Negative");
+        return false;
+        //    System.out.println("Please enter yes or no!");
         }
     }
 
@@ -56,12 +57,38 @@ public class StringExploration {
     // mvn compile exec:java -q "-Dexec.mainClass=edu.grinnell.csc207.exploration.StringExploration"
     public static void main(String[] args) {
         System.out.println(parseName("Hello,my,name"));
-        forgivingPrompt("No");
-        // intersperse(args);
+        //System.out.println(fetchString());
+        forgivingPrompt("Do you like dogs?");
+       /* boolean ans= forgivingPrompt("Do you like dogs?");
+        if(ans)
+            System.out.println("user entered yes");
+        else
+            System.out.println("user entered false"); */
     }
 }
 
 /*
+ /** TODO: fill me in and my docstring! 
+    public static boolean forgivingPrompt(String question) {
+        String answer =fetchString();
+        String lowerQ = answer.toLowerCase();
+     //   while(true)
+        if(lowerQ.charAt(0)=='y'){
+            if(lowerQ=="y" || lowerQ=="yes" || lowerQ=="yep"){
+                System.out.println("Correct");
+                return true;
+            }
+      /* } else if(lowerQ.charAt(0)=='n'){
+        
+            if(lowerQ=="n" || lowerQ=="no" || lowerQ=="nope"){
+                return false;
+            }} 
+       }else{
+        return false;
+        //    System.out.println("Please enter yes or no!");
+        }
+    }
+
     public static String parseName(String fullName) {
         String lastName ="";
         String firstName ="";

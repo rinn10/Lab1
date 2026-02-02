@@ -37,17 +37,19 @@ public class StringExploration {
     }
     /** TODO: fill me in and my docstring! */
     public static boolean forgivingPrompt(String question) {
-        String answer =fetchString();
-        String lowerQ = answer.toLowerCase();
-     //   while(true)
-        if(lowerQ=="y" || lowerQ=="yes" || lowerQ=="yep"){
-                System.out.println("Correct");
-                return true;
-       }else{
-        System.out.println("Negative");
-        return false;
-        //    System.out.println("Please enter yes or no!");
-        }
+         Scanner scanner = new Scanner(System.in);
+      //  String answer =fetchString();
+        String lowerQ = scanner.toLowerCase();
+        while(true)
+        if(lowerQ.equals("y") || lowerQ.equals("yes") || lowerQ.equals("yep")){
+            System.out.println("Correct");
+            return true;
+       }else if (lowerQ.equals("n") || lowerQ.equals("no") || lowerQ.equals("nope")){
+            System.out.println("Negative");
+            return false;
+       }else {
+        return scanner.nextLine();
+       }
     }
 
     // N.B., to run this program, use the following maven command to specify

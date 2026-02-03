@@ -2,7 +2,7 @@
 
 ## About
 
-_(TODO: insert a description of the project here!)_
+Java Explorations Lab and Barcodes Project
 
 ### Authors
 
@@ -11,8 +11,7 @@ _(TODO: insert a description of the project here!)_
 
 ### Resources
 
-*   _(TODO: list your resources here!)_
-*   ...
+*  PM and Sam for help in office hours and class
 
 ## Write-up
 

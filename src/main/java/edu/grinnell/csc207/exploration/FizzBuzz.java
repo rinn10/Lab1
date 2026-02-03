@@ -1,6 +1,13 @@
 package edu.grinnell.csc207.exploration;
 
 public class FizzBuzz{
+
+    /**
+     * Prints fizz (divisible by 3), 
+     * buzz (divisible by 5) or fizzbuzz 
+     * (divisible by 3 and 5) for numbers between 0-n
+     * @param n, a positive integer
+     */
     public static void fizzbuzz(int n){
         String output="";
         for(int i=1; i<n+1; i++){

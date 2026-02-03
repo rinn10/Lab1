@@ -1,4 +1,4 @@
-// package edu.grinnell.csc207.barcodes;
+package edu.grinnell.csc207.barcodes;
 
 public class Barcodes {
     /** TODO: fill in this definition and doc comment! */
@@ -63,25 +63,29 @@ public class Barcodes {
     public static void printBarcodeRow(String code) {
         String black=  "\033[30m█\033[0m";
         String white=  "\033[37m█\033[0m";
-        for(int i=0; i<ENCODINGS.length; i++){
+        for(int i=0; i<code.length(); i++){
+            int current =code.charAt(i);
             for(int j=0; j<ENCODINGS[j].length; j++){
-                for(int k=0; k<ENCODINGS[i][j]; k++)
-                if(j%2==0){
+                for(int k=0; k<ENCODINGS[k][j]; k++){
+                if(k%2==0){
                     System.out.println(white);
                 }
                 else{
                     System.out.println(black);
                 }
+                System.out.println();
             }
         }
     }
+}
     /**
      * TODO: fill in this definition and doc comment!
      * @param args
      */
     public static void main(String[] args) {
-        printBarcodeRow("123456789891");
-        // System.out.println(printBarcodeRow(computeCheckDigit("123456789891")));
+        printBarcodeRow(args[0]);
+       // printBarcodeRow("123456789891");
+       // System.out.println(computeCheckDigit("123456789891"));
     }
 }
 

@@ -35,35 +35,25 @@ public class Barcodes {
 
     /**
      * TODO: fill in this definition and doc comment!
-     * // "0" = 63? so subtract each number from this.
      */
     public static int computeCheckDigit(String code) {
         if(isValidCode(code)){
         int C=0;
-        for(int i=0; i<code.length()-1; i++){
-            int code_num =code.charAt(i) - '0';
+        for(int i=0; i<code.length(); i++){
             if(i%2==0){
-              C += 3*code_num;
+                C += 3*code.charAt(i);
             }
             else{
-                C += code_num;
+                C += code.charAt(i);
             }
         }
         C %= 10;
-        if(C==0){
-            return 0;
-        } else{
-        return 10-C;
-        }
+        int answer=10-C;
+        return answer;
     }
     return -1;
-}
-
-    public static void printNum(String color, int num) {
-        for(int i=0; i<num; i++){
-            System.out.print(color);
-        }
     }
+
     /**
      * TODO: fill in this definition and doc comment!
      * !! check code's digit one by one(for loop)
@@ -72,18 +62,18 @@ public class Barcodes {
      */
     public static void printBarcodeRow(String code) {
         String black=  "\033[30m█\033[0m";
-       String white=  "\033[37m█\033[0m";
+        String white=  "\033[37m█\033[0m";
         for(int i=0; i<code.length(); i++){
-            int current =code.charAt(i) - '0';
-            for(int j=0; j<ENCODINGS[current].length; j++){
-                for(int k=0; k<ENCODINGS[current][j]; k++){
-                if(k%2==0){ 
-                    System.out.print(white);
+            int current =code.charAt(i);
+            for(int j=0; j<ENCODINGS[j].length; j++){
+                for(int k=0; k<ENCODINGS[k][j]; k++){
+                if(k%2==0){
+                    System.out.println(white);
                 }
                 else{
-                    System.out.print(black);
+                    System.out.println(black);
                 }
-               // System.out.println();
+                System.out.println();
             }
         }
     }
@@ -93,8 +83,8 @@ public class Barcodes {
      * @param args
      */
     public static void main(String[] args) {
-        //printBarcodeRow(args[0]);
-       System.out.println(computeCheckDigit("036000291452"));
+        printBarcodeRow(args[0]);
+       // printBarcodeRow("123456789891");
        // System.out.println(computeCheckDigit("123456789891"));
     }
 }

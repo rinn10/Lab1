@@ -73,12 +73,11 @@ public class Barcodes {
             for(int j=0; j<ENCODINGS[j].length; j++){
                 for(int k=0; k<ENCODINGS[k][j]; k++){
                 if(k%2==0){
-                    System.out.println(white);
+                    System.out.print(white);
                 }
                 else{
-                    System.out.println(black);
+                    System.out.print(black);
                 }
-                System.out.println();
             }
         }
     }

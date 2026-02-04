@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.barcodes;
+// package edu.grinnell.csc207.barcodes;
 
 public class Barcodes {
     /** TODO: fill in this definition and doc comment! */
@@ -35,24 +35,31 @@ public class Barcodes {
 
     /**
      * TODO: fill in this definition and doc comment!
+     * // "0" = 63? so subtract each number from this.
      */
     public static int computeCheckDigit(String code) {
         if(isValidCode(code)){
         int C=0;
-        for(int i=0; i<code.length(); i++){
+        for(int i=0; i<code.length()-1; i++){
+            int code_num =code.charAt(i) - '0';
             if(i%2==0){
-                C += 3*code.charAt(i);
+              C += 3*code_num;
+                System.out.println(C);
             }
             else{
-                C += code.charAt(i);
+                C += code_num;
+                System.out.println(C);
             }
         }
         C %= 10;
-        int answer=10-C;
-        return answer;
+        if(C==0){
+            return 0;
+        } else{
+        return 10-C;
+        }
     }
     return -1;
-    }
+}
 
     /**
      * TODO: fill in this definition and doc comment!
@@ -62,18 +69,18 @@ public class Barcodes {
      */
     public static void printBarcodeRow(String code) {
         String black=  "\033[30m█\033[0m";
-        String white=  "\033[37m█\033[0m";
+       String white=  "\033[37m█\033[0m";
         for(int i=0; i<code.length(); i++){
             int current =code.charAt(i);
             for(int j=0; j<ENCODINGS[j].length; j++){
                 for(int k=0; k<ENCODINGS[k][j]; k++){
-                if(k%2==0){
-                    System.out.println(white);
+                if(k%2==0){ 
+                    System.out.print(white);
                 }
                 else{
-                    System.out.println(black);
+                    System.out.print(black);
                 }
-                System.out.println();
+               // System.out.println();
             }
         }
     }
@@ -84,7 +91,7 @@ public class Barcodes {
      */
     public static void main(String[] args) {
         printBarcodeRow(args[0]);
-       // printBarcodeRow("123456789891");
+       System.out.println(computeCheckDigit("036000291452"));
        // System.out.println(computeCheckDigit("123456789891"));
     }
 }

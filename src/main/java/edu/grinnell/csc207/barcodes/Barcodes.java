@@ -44,11 +44,9 @@ public class Barcodes {
             int code_num =code.charAt(i) - '0';
             if(i%2==0){
               C += 3*code_num;
-                System.out.println(C);
             }
             else{
                 C += code_num;
-                System.out.println(C);
             }
         }
         C %= 10;
@@ -61,6 +59,11 @@ public class Barcodes {
     return -1;
 }
 
+    public static void printNum(String color, int num) {
+        for(int i=0; i<num; i++){
+            System.out.print(color);
+        }
+    }
     /**
      * TODO: fill in this definition and doc comment!
      * !! check code's digit one by one(for loop)
@@ -71,9 +74,9 @@ public class Barcodes {
         String black=  "\033[30m█\033[0m";
        String white=  "\033[37m█\033[0m";
         for(int i=0; i<code.length(); i++){
-            int current =code.charAt(i);
-            for(int j=0; j<ENCODINGS[j].length; j++){
-                for(int k=0; k<ENCODINGS[k][j]; k++){
+            int current =code.charAt(i) - '0';
+            for(int j=0; j<ENCODINGS[current].length; j++){
+                for(int k=0; k<ENCODINGS[current][j]; k++){
                 if(k%2==0){ 
                     System.out.print(white);
                 }
@@ -90,7 +93,7 @@ public class Barcodes {
      * @param args
      */
     public static void main(String[] args) {
-        printBarcodeRow(args[0]);
+        //printBarcodeRow(args[0]);
        System.out.println(computeCheckDigit("036000291452"));
        // System.out.println(computeCheckDigit("123456789891"));
     }

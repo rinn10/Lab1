@@ -65,24 +65,7 @@ public class Barcodes {
      * !! check code's digit one by one(for loop)
      * If 0, get the first column in ENCODINGS
      * ?? Are squares in black and white working on your PC? 
-     
-    public static void printBarcodeRow(String code) {
-        String black=  "\033[30m█\033[0m";
-        String white=  "\033[37m█\033[0m";
-        for(int i=0; i<code.length(); i++){
-            int current =code.charAt(i);
-            for(int j=0; j<ENCODINGS[j].length; j++){
-                for(int k=0; k<ENCODINGS[k][j]; k++){
-                if(k%2==0){
-                    System.out.print(white);
-                }
-                else{
-                    System.out.print(black);
-                }
-            }
-        }
-    }
-        /* */
+     */
 
 
     public static void printBarcodeRow(String code) 
@@ -148,32 +131,19 @@ public class Barcodes {
 
     System.out.println();
 }
+
+
     /**
      * TODO: fill in this definition and doc comment!
      * @param args
      */
     public static void main(String[] args) {
-        printBarcodeRow(args[0]);
-       //printBarcodeRow("123456789891");
-       //System.out.println(computeCheckDigit("123456789891"));
-    }
-}
-
-
-/*
-    public static void printBarcodeRow(String code) {
-        String black=  "\033[30m\033[0m";
-        String white=  "\033[37m\033[0m";
-        for(int i=0; i<ENCODINGS.length; i++){
-            for(int j=0; j<ENCODINGS[j].length; j++){
-                for(int k=0; k<ENCODINGS[i][j]; k++)
-                if(j%2==0){
-                    System.out.println(white);
-                }
-                else{
-                    System.out.println(black);
-                }
-            }
-        }
-    }
-         */
+        if(args.length!=2)
+            System.out.println("Usage: barcode <upc-a code> <height>");
+        else if(!isValidCode(args[0]))
+            System.out.println("Code must be a string of 12 digits.");
+        else if(Integer.parseInt(args[1])<0)
+            System.out.println("Height must be a positive integer.");
+        else
+            printBarcodeRow(args[0]);
+    }}

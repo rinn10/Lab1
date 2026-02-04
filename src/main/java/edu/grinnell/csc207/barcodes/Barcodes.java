@@ -1,4 +1,4 @@
-// package edu.grinnell.csc207.barcodes;
+package edu.grinnell.csc207.barcodes;
 
 public class Barcodes {
     /** TODO: fill in this definition and doc comment! */

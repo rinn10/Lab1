@@ -4,6 +4,7 @@ public class Barcodes {
     /** TODO: fill in this definition and doc comment! */
     private static int[][] ENCODINGS = {
         {3,2,1,1},
+        {2,2,2,1},
         {2,1,2,2},
         {1,4,1,1},
         {1,1,3,2},
@@ -64,7 +65,7 @@ public class Barcodes {
      * !! check code's digit one by one(for loop)
      * If 0, get the first column in ENCODINGS
      * ?? Are squares in black and white working on your PC? 
-     */
+     
     public static void printBarcodeRow(String code) {
         String black=  "\033[30m█\033[0m";
         String white=  "\033[37m█\033[0m";
@@ -81,6 +82,71 @@ public class Barcodes {
             }
         }
     }
+        /* */
+
+
+    public static void printBarcodeRow(String code) 
+    {
+    String black = "\033[30m█\033[0m";
+    String white = "\033[37m█\033[0m";
+  
+    for (int i = 0; i < 9; i++) 
+	    System.out.print(white);
+
+    System.out.print(black);
+    System.out.print(white);
+    System.out.print(black);
+
+    for (int i = 0; i < 6; i++) 
+        {
+        int digit = code.charAt(i) - '0';
+        boolean blackNow = false;
+
+        for (int j = 0; j < ENCODINGS[digit].length; j++) 
+            {
+            for (int k = 0; k < ENCODINGS[digit][j]; k++) 
+                {
+                if (blackNow) 
+			        System.out.print(black);
+                else 
+			        System.out.print(white);
+            }
+            blackNow = !blackNow;
+        }
+    }
+
+    System.out.print(white);
+    System.out.print(black);
+    System.out.print(white);
+    System.out.print(black);
+    System.out.print(white);
+
+    for (int i = 6; i < 12; i++) 
+    {
+        int digit = code.charAt(i) - '0';
+        boolean blackNow = true;
+
+        for (int j = 0; j < ENCODINGS[digit].length; j++) 
+            {
+            for (int k = 0; k < ENCODINGS[digit][j]; k++) 
+                {
+                if (blackNow) 
+			        System.out.print(black);
+                else 
+			        System.out.print(white);
+            }
+            blackNow = !blackNow;
+        }
+    }
+
+    System.out.print(black);
+    System.out.print(white);
+    System.out.print(black);
+
+    for (int i = 0; i < 9; i++) 
+	    System.out.print(white);
+
+    System.out.println();
 }
     /**
      * TODO: fill in this definition and doc comment!
@@ -88,8 +154,8 @@ public class Barcodes {
      */
     public static void main(String[] args) {
         printBarcodeRow(args[0]);
-       // printBarcodeRow("123456789891");
-       // System.out.println(computeCheckDigit("123456789891"));
+       //printBarcodeRow("123456789891");
+       //System.out.println(computeCheckDigit("123456789891"));
     }
 }
 

@@ -36,23 +36,28 @@ public class Barcodes {
     /**
      * TODO: fill in this definition and doc comment!
      */
-    public static int computeCheckDigit(String code) {
+
+     public static int computeCheckDigit(String code) {
         if(isValidCode(code)){
         int C=0;
-        for(int i=0; i<code.length(); i++){
+        for(int i=0; i<code.length()-1; i++){
+            int code_num =code.charAt(i) - '0';
             if(i%2==0){
-                C += 3*code.charAt(i);
+              C += 3*code_num;
             }
             else{
-                C += code.charAt(i);
+                C += code_num;
             }
         }
         C %= 10;
-        int answer=10-C;
-        return answer;
+        if(C==0){
+            return 0;
+        } else{
+        return 10-C;
+        }
     }
     return -1;
-    }
+}
 
     /**
      * TODO: fill in this definition and doc comment!
